@@ -1,6 +1,7 @@
 import random
 
-top_of_random_range = input("Type a number: ")      #User Input is also enclosed in quotations thus, if input is digit, convert to integer
+#User Input is also enclosed in quotations thus, if input is digit, convert to integer. Else, break
+top_of_random_range = input("Type a number: ")      
 if top_of_random_range.isdigit():                   
     top_of_random_range = int(top_of_random_range)
     
@@ -21,7 +22,8 @@ while True:
         user_guess = int(user_guess)
     else:
         print("Please type a number next time")
-        continue            #Returns to initial if statement
+        continue            
+        #Returns you to the top of the while loop
     
     if user_guess == random_number:
         print("You got it correct")
@@ -31,4 +33,5 @@ while True:
     else:
         print("Your guess is below the random number")
 
-print("You got it in", guesses, "guesses")      #Instead of using + and performing string conversion, use this
+print("You got it in", guesses, "guesses")      
+#Instead of using + and performing string conversion, use this
