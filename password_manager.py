@@ -4,8 +4,7 @@ from cryptography.fernet import Fernet
 def write_key():
     key = Fernet.generate_key()
     with open("key.key", "wb") as key_file:
-        key_file.write(key)
-'''
+        key_file.write(key)'''
 # After you write the key in the file once, comment out the function
 
 def load_key():
@@ -14,23 +13,22 @@ def load_key():
     file.close()
     return key
 
-master_pwd = input("Enter the Master Password: ")
-key = load_key() + master_pwd.encode()
+key = load_key()
 fer = Fernet(key)
 
 def view():
     with open("passwords.txt", "r") as f:
         for line in f.readlines():
             data = line.rstrip()
-            user, passwd = data.split("|")
-            print("Username:", user, "\n" + "Password:", passwd)
+            user, passw = data.split("|")
+            print("Username:", user, "| Password:", fer.decrypt(passw.encode()).decode())
 
 def add():
     name = input("Account Name: ")
     pwd = input("Account Password: ")
     
     with open("passwords.txt", "a") as f:
-        f.write(name + "|" + str(fer.encrypt(pwd.encode())) + "\n") 
+        f.write(name + "|" + fer.encrypt(pwd.encode()).decode() + "\n") 
 
 while True:
     mode = input("Would you like to Add a new password or View an existing password (add/view), or type in q to quit?: ")
