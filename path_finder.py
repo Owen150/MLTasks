@@ -48,6 +48,24 @@ def find_path(maze, stdscr):
         if maze[row][col] == end:
             return path
 
+def find_neighbors(maze, row, col):
+    neighbors = []
+    
+    #Up
+    if row > 0:
+        neighbors.append((row - 1, col))
+    #Down
+    if row + 1 < len(maze):
+        neighbors.append((row + 1, col))
+    #Left
+    if col > 0:
+        neighbors.append((row, col - 1))
+    #Right
+    if col + 1 < len(maze[0]):
+        neighbors.append((row, col + 1))
+        
+    return neighbors
+
 def main(stdscr):
     #Initializing the foreground and background
     curses.init_pair(1, curses.COLOR_BLUE, curses.COLOR_BLACK)
