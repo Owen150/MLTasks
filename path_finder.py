@@ -35,6 +35,18 @@ def find_path(maze, stdscr):
     start = "O"
     end = "X"
     start_pos = find_start(maze, start)
+    
+    q = queue.Queue()
+    q.put((start_pos, [start_pos]))
+    
+    visited = set()
+    
+    while not q.empty():
+        current_pos, path = q.get()
+        row, col = current_pos
+        
+        if maze[row][col] == end:
+            return path
 
 def main(stdscr):
     #Initializing the foreground and background
