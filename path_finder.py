@@ -4,7 +4,7 @@ import queue
 import time
 
 maze = [
-    ["#", "#", "#", "#", "#", "0", "#", "#", "#"],
+    ["#", "#", "#", "#", "#", "O", "#", "#", "#"],
     ["#", " ", " ", " ", " ", " ", " ", " ", "#"],
     ["#", " ", "#", "#", " ", "#", "#", " ", "#"],
     ["#", " ", "#", " ", " ", " ", "#", " ", "#"],
@@ -22,6 +22,19 @@ def print_maze(maze, stdscr, path=[]):
     for i, row in enumerate(maze):
         for j, value in enumerate(row):
             stdscr.addstr(i, j*2, value, BLUE)
+            
+def find_start(maze, start):
+    for i, row in enumerate(maze):
+        for j, value in enumerate(row):
+            if value == start:
+                return i, j
+            
+    return None
+
+def find_path(maze, stdscr):
+    start = "O"
+    end = "X"
+    start_pos = find_start(maze, start)
 
 def main(stdscr):
     #Initializing the foreground and background
