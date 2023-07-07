@@ -9,9 +9,16 @@ printer = PrettyPrinter()
 def get_currencies():
     endpoint = f"api/v7/currencies?apiKey={API_KEY}"
     url = BASE_URL + endpoint
-    data = get(url).json()
+    data = get(url).json()['results']
     
-    printer.pprint(data)
+    #Converting the data from a dictionary to a list by getting all the items so that we can sort the data by the different currency names
+    #The items will give tuples that contain the key-the currency, value-associated with each currency
+    data = list(data.items())
+    #Will be sorted by the first item in the set/list i.e. currencyName
+    data.sort()
+    
+    return data
     
     
-get_currencies()
+data = get_currencies()
+printer.pprint(data)

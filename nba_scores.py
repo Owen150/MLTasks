@@ -7,6 +7,7 @@ ALL_JSON = "/prod/v1/today.json"  #Endpoint i.e.The specific data that we want
 printer = PrettyPrinter()
 
 def get_links():
+    #Or: url = BASE_URL + ALL_JSON \n data = get(url).json()
     data = get(BASE_URL + ALL_JSON).json()
     links = data['links']
     return links
