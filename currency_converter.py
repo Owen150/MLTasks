@@ -2,7 +2,7 @@ from requests import get
 from pprint import PrettyPrinter
 
 BASE_URL = "https://free.currconv.com/"
-API_KEY = "562ddaf40c95f5d58108"
+API_KEY = "d80eb222102aad1189ad"
 
 printer = PrettyPrinter()
 
